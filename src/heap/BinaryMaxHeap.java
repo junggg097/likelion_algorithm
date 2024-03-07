@@ -1,5 +1,7 @@
 package heap;
 
+import java.util.Arrays;
+
 public class BinaryMaxHeap {
     private int[] heap;
     private int size;
@@ -9,6 +11,21 @@ public class BinaryMaxHeap {
         size = 0;
     }
 
+    // Heapify
+    public BinaryMaxHeap(int[] arr) {
+        // heap에 복사
+        heap = Arrays.copyOf(arr, arr.length);
+        size = arr.length;
+
+        // 가장 나중의 노드를 찾는다.
+        int lastIndex = size - 1;
+        // 그 노드의 부모를 찾는다.
+        int lastParentIndex = (lastIndex - 1) / 2;
+        // 그 부모부터 루트까지 siftDown을 진행한다.
+        for (int i = lastParentIndex; i >= 0; i--) {
+            siftDown(i);
+        }
+    }
     public void insert(int item) {
         if (size == heap.length) {
             throw new RuntimeException("Heap is full");
@@ -106,6 +123,14 @@ public class BinaryMaxHeap {
         for (int i = 0; i < 16; i++ ){
             System.out.print(maxHeap.remove() + ", ");
 
+        }
+        System.out.println();
+
+        BinaryMaxHeap maxHeapify = new BinaryMaxHeap(
+                new int[]{1, 21, 14, 6, 10, 2, 5, 7, 8}
+        );
+        for (int i = 0; i < 8; i ++) {
+            System.out.print(maxHeapify.remove()+ ", ");
         }
     }
 }
