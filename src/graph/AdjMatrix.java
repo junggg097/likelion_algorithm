@@ -138,6 +138,7 @@ public class AdjMatrix {
         }
     }
 
+
     public static void bfsAdjMatrix() throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
         String[] info = reader.readLine().split(" ");
